@@ -29,11 +29,10 @@ CREATE TABLE Products (
     base_price DECIMAL(10,2) NOT NULL,
     category_id INT,
     weight_kg DECIMAL(6,2),
-    length_cm INT,
-    width_cm INT,
-    height_cm INT,
+    dimensions_cm INT,
     material_type VARCHAR(100),
     assembly_required BOOLEAN DEFAULT FALSE,
+    image_url TEXT 
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (category_id) REFERENCES Categories(category_id)
