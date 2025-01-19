@@ -1,60 +1,60 @@
-%%{init: {
-  'theme': 'base',
-  'themeVariables': {
-    'background': '#ffffff',
-    'primaryColor': '#5a5a5a',
-    'primaryTextColor': '#000000',
-    'primaryBorderColor': '#000000',
-    'lineColor': '#000000',
-    'entityBorder': '#000000'
-  }
-}}%%
 erDiagram
-    USERS ||--o{ ORDERS : "places"
+    USERS ||--o{ ORDERS : places
     USERS {
         int user_id PK
         string email
+        string password
         string first_name
         string last_name
         string phone
+        datetime created_at
     }
     
-    PRODUCTS ||--o{ PRODUCT_VARIANTS : "has"
+    PRODUCTS ||--o{ PRODUCT_VARIANTS : has
+    PRODUCTS ||--o{ ORDER_ITEMS : contains
     PRODUCTS {
         int product_id PK
         string name
-        string description
+        text description
         decimal price
         int category_id FK
-        string dimensions
+        decimal weight
+        int length
+        int width
+        int height
+        string material
         boolean assembly_required
     }
 
-    CATEGORIES ||--o{ PRODUCTS : "has"
+    CATEGORIES ||--o{ PRODUCTS : categorizes
     CATEGORIES {
         int category_id PK
         string name
         int parent_id FK
         string description
+        boolean active
     }
 
-    ORDERS ||--o{ ORDER_ITEMS : "contains"
+    ORDERS ||--o{ ORDER_ITEMS : includes
     ORDERS {
         int order_id PK
         int user_id FK
         decimal total_amount
         string status
+        datetime order_date
         date delivery_date
+        boolean assembly_required
     }
 
-    PRODUCT_VARIANTS ||--o{ ORDER_ITEMS : "included in"
+    PRODUCT_VARIANTS ||--o{ ORDER_ITEMS : ordered_as
     PRODUCT_VARIANTS {
         int variant_id PK
         int product_id FK
         string color
+        string finish
         string sku
-        decimal price
-        int stock
+        decimal price_adjustment
+        int stock_quantity
     }
 
     ORDER_ITEMS {
@@ -62,39 +62,48 @@ erDiagram
         int order_id FK
         int variant_id FK
         int quantity
-        decimal price
+        decimal unit_price
+        decimal assembly_cost
     }
 
-    INVENTORY ||--o{ PRODUCT_VARIANTS : "tracks"
+    INVENTORY ||--o{ PRODUCT_VARIANTS : tracks
     INVENTORY {
         int inventory_id PK
         int variant_id FK
         int warehouse_id FK
         int quantity
-        int reserved
+        int reserved_quantity
+        datetime last_updated
     }
 
-    WAREHOUSES ||--o{ INVENTORY : "stores"
+    WAREHOUSES ||--o{ INVENTORY : stores
     WAREHOUSES {
         int warehouse_id PK
         string name
         string address
         int capacity
+        string contact_phone
+        boolean active
     }
 
-    REVIEWS ||--o{ PRODUCTS : "rates"
+    REVIEWS ||--o{ PRODUCTS : rates
     REVIEWS {
         int review_id PK
         int product_id FK
         int user_id FK
         int rating
-        string comment
+        text comment
+        datetime review_date
+        boolean verified_purchase
     }
 
-    SUPPLIERS ||--o{ PRODUCTS : "supplies"
+    SUPPLIERS ||--o{ PRODUCTS : supplies
     SUPPLIERS {
         int supplier_id PK
         string name
-        string contact
+        string contact_person
         string email
+        string phone
+        string address
+        int lead_time_days
     }
