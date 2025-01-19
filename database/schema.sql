@@ -16,7 +16,6 @@ CREATE TABLE Users (
 CREATE TABLE Categories (
     category_id INT PRIMARY KEY AUTO_INCREMENT,
     category_name VARCHAR(100) NOT NULL,
-    parent_category_id INT,
     description TEXT,
     is_active BOOLEAN DEFAULT TRUE,
     FOREIGN KEY (parent_category_id) REFERENCES Categories(category_id)
@@ -38,18 +37,6 @@ CREATE TABLE Products (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (category_id) REFERENCES Categories(category_id)
-);
-
--- Product Variants Table
-CREATE TABLE Product_Variants (
-    variant_id INT PRIMARY KEY AUTO_INCREMENT,
-    product_id INT NOT NULL,
-    color VARCHAR(50),
-    finish VARCHAR(50),
-    sku VARCHAR(50) UNIQUE,
-    price_adjustment DECIMAL(10,2) DEFAULT 0.00,
-    stock_quantity INT DEFAULT 0,
-    FOREIGN KEY (product_id) REFERENCES Products(product_id)
 );
 
 -- Orders Table
