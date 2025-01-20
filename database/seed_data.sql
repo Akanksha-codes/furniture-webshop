@@ -1,3 +1,3 @@
-INSERT INTO furniture_products (name, category, material, dimensions, color, price, stock_quantity, image_url, description)
+INSERT INTO Products (product_id, product_name, description, base_price, category_id, weight_kg, dimension_cm, material_type,assembly_required, image_url, created_at, updated_at )
 VALUES
-    ('Modern Sofa', 'Sofa', 'Leather', '200x90x80 cm', 'Brown', 699.99, 15, 'https://example.com/sofa.jpg', 'Comfortable leather sofa');
+    (01, 'Modern Sofa', 'Sofa', 'living room', 450, 2, '40kg', '200,80,90 cm', 'wood', TRUE, 'images/sofa.jpg', 18/01/2025 , 20/01/2025);
