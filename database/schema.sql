@@ -18,6 +18,7 @@ CREATE TABLE Categories (
     category_name VARCHAR(100) NOT NULL,
     description TEXT,
     is_active BOOLEAN DEFAULT TRUE,
+    parent_category_id INT
     FOREIGN KEY (parent_category_id) REFERENCES Categories(category_id)
 );
 
@@ -43,7 +44,6 @@ CREATE TABLE Product_Variants (
     variant_id INT PRIMARY KEY AUTO_INCREMENT,
     product_id INT NOT NULL,
     color VARCHAR(50),
-    finish VARCHAR(50),
     price_adjustment DECIMAL(10,2) DEFAULT 0.00,
     stock_quantity INT DEFAULT 0,
     FOREIGN KEY (product_id) REFERENCES Products(product_id)
