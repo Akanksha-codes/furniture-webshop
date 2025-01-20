@@ -38,6 +38,17 @@ CREATE TABLE Products (
     FOREIGN KEY (category_id) REFERENCES Categories(category_id)
 );
 
+-- Product Variants Table
+CREATE TABLE Product_Variants (
+    variant_id INT PRIMARY KEY AUTO_INCREMENT,
+    product_id INT NOT NULL,
+    color VARCHAR(50),
+    finish VARCHAR(50),
+    price_adjustment DECIMAL(10,2) DEFAULT 0.00,
+    stock_quantity INT DEFAULT 0,
+    FOREIGN KEY (product_id) REFERENCES Products(product_id)
+);
+
 -- Orders Table
 CREATE TABLE Orders (
     order_id INT PRIMARY KEY AUTO_INCREMENT,
