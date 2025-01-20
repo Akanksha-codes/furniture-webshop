@@ -80,7 +80,6 @@ CREATE TABLE Warehouses (
     warehouse_id INT PRIMARY KEY AUTO_INCREMENT,
     warehouse_name VARCHAR(255) NOT NULL,
     address TEXT NOT NULL,
-    capacity_sqm INT,
     contact_phone VARCHAR(20),
     is_active BOOLEAN DEFAULT TRUE
 );
