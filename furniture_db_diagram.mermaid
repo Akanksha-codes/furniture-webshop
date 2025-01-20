@@ -7,7 +7,9 @@ erDiagram
         string first_name
         string last_name
         string phone
+        boolean is_active
         datetime created_at
+        datetime updated_at
     }
     
     PRODUCTS ||--o{ PRODUCT_VARIANTS : has
@@ -49,8 +51,6 @@ erDiagram
         int variant_id PK
         int product_id FK
         string color
-        string finish
-        string sku
         decimal price_adjustment
         int stock_quantity
     }
@@ -79,7 +79,6 @@ erDiagram
         int warehouse_id PK
         string name
         string address
-        int capacity
         string contact_phone
         boolean active
     }
