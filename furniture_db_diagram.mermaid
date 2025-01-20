@@ -25,15 +25,6 @@ erDiagram
         boolean assembly_required
     }
 
-    CATEGORIES ||--o{ PRODUCTS : categorizes
-    CATEGORIES {
-        int category_id PK
-        string name
-        int parent_id FK
-        string description
-        boolean active
-    }
-
     ORDERS ||--o{ ORDER_ITEMS : includes
     ORDERS {
         int order_id PK
