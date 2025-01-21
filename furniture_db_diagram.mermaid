@@ -8,8 +8,7 @@ erDiagram
         string last_name
         string phone
         boolean is_active
-        datetime created_at
-        datetime updated_at
+       
     }
 
     PRODUCTS ||--o{ ORDER_ITEMS : contains
@@ -23,6 +22,7 @@ erDiagram
         int dimensions
         string material
         text image_url
+        int supplier_id FK
         boolean assembly_required
     }
    CATEGORIES ||--o{ PRODUCTS : categorizes
@@ -60,7 +60,6 @@ erDiagram
     ORDER_ITEMS {
         int order_item_id PK
         int order_id FK
-        int variant_id FK
         int quantity
         decimal unit_price
         decimal assembly_cost
@@ -69,9 +68,7 @@ erDiagram
     INVENTORY ||--o{ ORDER_ITEMS : tracks
     INVENTORY {
         int inventory_id PK
-        int variant_id FK
-        int warehouse_id FK
-        int quantity
+        int stock_quantity
         int reserved_quantity
         datetime last_updated
     }
