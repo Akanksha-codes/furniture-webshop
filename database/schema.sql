@@ -3,8 +3,7 @@ CREATE TABLE Users (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
     email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
-    first_name VARCHAR(100) NOT NULL,
-    last_name VARCHAR(100) NOT NULL,
+    full_name VARCHAR(100) NOT NULL,
     phone_number VARCHAR(20),
     registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     is_active BOOLEAN DEFAULT TRUE,
@@ -34,6 +33,10 @@ CREATE TABLE Products (
     material_type VARCHAR(100),
     assembly_required BOOLEAN DEFAULT FALSE,
     image_url TEXT 
+    supplier_name VARCHAR(255) NOT NULL,
+    supllier_email VARCHAR(255) NOT NULL,
+    supplier_phone VARCHAR(20),
+    stock_quantity INT DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (category_id) REFERENCES Categories(category_id)
@@ -57,39 +60,24 @@ CREATE TABLE Orders (
 CREATE TABLE Order_Items (
     order_item_id INT PRIMARY KEY AUTO_INCREMENT,
     order_id INT NOT NULL,
+    product_id INT NOT NULL,
     quantity INT NOT NULL,
     unit_price DECIMAL(10,2) NOT NULL,
     assembly_cost DECIMAL(10,2) DEFAULT 0.00,
     FOREIGN KEY (order_id) REFERENCES Orders(order_id),
-    FOREIGN KEY (variant_id) REFERENCES Product_Variants(variant_id)
+    FOREIGN KEY (product_id) REFERENCES Products(product_id)
+);
 );
 
 -- Inventory Table
 CREATE TABLE Inventory (
     inventory_id INT PRIMARY KEY AUTO_INCREMENT,
-    warehouse_id INT NOT NULL,
+    product_id INT NOT NULL,
     quantity INT NOT NULL DEFAULT 0,
     reserved_quantity INT DEFAULT 0,
     last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (warehouse_id) REFERENCES Warehouses(warehouse_id)
+    FOREIGN KEY (product_id) REFERENCES Products(product_id)
 );
-
--- Warehouses Table
-CREATE TABLE Warehouses (
-    warehouse_id INT PRIMARY KEY AUTO_INCREMENT,
-    warehouse_name VARCHAR(255) NOT NULL,
-    address TEXT NOT NULL,
-    contact_phone VARCHAR(20),
-    is_active BOOLEAN DEFAULT TRUE
-);
-
--- Suppliers Table
-CREATE TABLE Suppliers (
-    supplier_id INT PRIMARY KEY AUTO_INCREMENT,
-    supplier_name VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
-    phone VARCHAR(20),
-    address TEXT,
 );
 
 -- Payment Table
@@ -111,5 +99,5 @@ CREATE TABLE Payments (
 CREATE INDEX idx_products_category ON Products(category_id);
 CREATE INDEX idx_orders_user ON Orders(user_id);
 CREATE INDEX idx_order_items_order ON Order_Items(order_id);
-CREATE INDEX idx_inventory_variant ON Inventory(variant_id);
+CREATE INDEX idx_inventory_product ON Inventory(product_id);
 CREATE INDEX idx_payments_user ON Payments(user_id);
