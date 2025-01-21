@@ -36,6 +36,7 @@ erDiagram
     }
 
     ORDERS ||--o{ ORDER_ITEMS : includes
+    ORDERS ||--|| PAYMENT : has
     ORDERS {
         int order_id PK
         int user_id FK
@@ -45,6 +46,16 @@ erDiagram
         date delivery_date
         boolean assembly_required
     }
+
+    PAYMENT {
+        int payment_id pk
+        int order_id fk
+        decimal amount
+        string payment_method
+        datetime payment_date
+        string status
+        string error_message
+    )
 
     PRODUCT_VARIANTS ||--o{ ORDER_ITEMS : ordered_as
     PRODUCT_VARIANTS {
