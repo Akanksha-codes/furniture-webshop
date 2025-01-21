@@ -5,8 +5,6 @@ CREATE TABLE Users (
     full_name VARCHAR(100) NOT NULL,
     phone_number VARCHAR(20),
     address VARCHAR(255),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 -- Categories Table
@@ -55,7 +53,6 @@ CREATE TABLE Order_Items (
     product_id INT NOT NULL,
     quantity INT NOT NULL,
     unit_price DECIMAL(10,2) NOT NULL,
-    assembly_cost DECIMAL(10,2) DEFAULT 0.00,
     FOREIGN KEY (order_id) REFERENCES Orders(order_id),
     FOREIGN KEY (product_id) REFERENCES Products(product_id)
 );
