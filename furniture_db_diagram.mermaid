@@ -48,13 +48,15 @@ erDiagram
     }
 
     PAYMENT {
-        int payment_id pk
-        int order_id fk
+        int payment_id PK
+        int order_id FK
         decimal amount
         string payment_method
         datetime payment_date
         string status
         string error_message
+        datetime created_at
+        datetime updated_at
     )
 
     PRODUCT_VARIANTS ||--o{ ORDER_ITEMS : ordered_as
