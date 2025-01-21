@@ -39,15 +39,6 @@ CREATE TABLE Products (
     FOREIGN KEY (category_id) REFERENCES Categories(category_id)
 );
 
--- Product Variants Table
-CREATE TABLE Product_Variants (
-    variant_id INT PRIMARY KEY AUTO_INCREMENT,
-    product_id INT NOT NULL,
-    color VARCHAR(50),
-    price_adjustment DECIMAL(10,2) DEFAULT 0.00,
-    stock_quantity INT DEFAULT 0,
-    FOREIGN KEY (product_id) REFERENCES Products(product_id)
-);
 
 -- Orders Table
 CREATE TABLE Orders (
@@ -66,7 +57,6 @@ CREATE TABLE Orders (
 CREATE TABLE Order_Items (
     order_item_id INT PRIMARY KEY AUTO_INCREMENT,
     order_id INT NOT NULL,
-    variant_id INT NOT NULL,
     quantity INT NOT NULL,
     unit_price DECIMAL(10,2) NOT NULL,
     assembly_cost DECIMAL(10,2) DEFAULT 0.00,
@@ -77,12 +67,10 @@ CREATE TABLE Order_Items (
 -- Inventory Table
 CREATE TABLE Inventory (
     inventory_id INT PRIMARY KEY AUTO_INCREMENT,
-    variant_id INT NOT NULL,
     warehouse_id INT NOT NULL,
     quantity INT NOT NULL DEFAULT 0,
     reserved_quantity INT DEFAULT 0,
     last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (variant_id) REFERENCES Product_Variants(variant_id),
     FOREIGN KEY (warehouse_id) REFERENCES Warehouses(warehouse_id)
 );
 
@@ -95,28 +83,13 @@ CREATE TABLE Warehouses (
     is_active BOOLEAN DEFAULT TRUE
 );
 
--- Reviews Table
-CREATE TABLE Reviews (
-    review_id INT PRIMARY KEY AUTO_INCREMENT,
-    product_id INT NOT NULL,
-    user_id INT NOT NULL,
-    rating INT NOT NULL CHECK (rating BETWEEN 1 AND 5),
-    comment TEXT,
-    review_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    verified_purchase BOOLEAN DEFAULT FALSE,
-    FOREIGN KEY (product_id) REFERENCES Products(product_id),
-    FOREIGN KEY (user_id) REFERENCES Users(user_id)
-);
-
 -- Suppliers Table
 CREATE TABLE Suppliers (
     supplier_id INT PRIMARY KEY AUTO_INCREMENT,
     supplier_name VARCHAR(255) NOT NULL,
-    contact_person VARCHAR(100),
     email VARCHAR(255) NOT NULL,
     phone VARCHAR(20),
     address TEXT,
-    lead_time_days INT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
@@ -138,9 +111,7 @@ CREATE TABLE Payments (
 
 -- Create Indexes for Better Performance
 CREATE INDEX idx_products_category ON Products(category_id);
-CREATE INDEX idx_product_variants_product ON Product_Variants(product_id);
 CREATE INDEX idx_orders_user ON Orders(user_id);
 CREATE INDEX idx_order_items_order ON Order_Items(order_id);
 CREATE INDEX idx_inventory_variant ON Inventory(variant_id);
-CREATE INDEX idx_reviews_product ON Reviews(product_id);
 CREATE INDEX idx_payments_user ON Payments(user_id);
