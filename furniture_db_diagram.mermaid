@@ -11,8 +11,7 @@ erDiagram
         datetime created_at
         datetime updated_at
     }
-    
-    PRODUCTS ||--o{ PRODUCT_VARIANTS : has
+
     PRODUCTS ||--o{ ORDER_ITEMS : contains
     PRODUCTS {
         int product_id PK
