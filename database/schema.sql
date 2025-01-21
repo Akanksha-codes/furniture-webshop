@@ -4,8 +4,7 @@ CREATE TABLE Users (
     email VARCHAR(255) NOT NULL UNIQUE,
     full_name VARCHAR(100) NOT NULL,
     phone_number VARCHAR(20),
-    registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    is_active BOOLEAN DEFAULT TRUE,
+    address VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
@@ -15,8 +14,6 @@ CREATE TABLE Categories (
     category_id INT PRIMARY KEY AUTO_INCREMENT,
     category_name VARCHAR(100) NOT NULL,
     description TEXT,
-    is_active BOOLEAN DEFAULT TRUE,
-    parent_category_id INT
     FOREIGN KEY (parent_category_id) REFERENCES Categories(category_id)
 );
 
@@ -30,14 +27,11 @@ CREATE TABLE Products (
     weight_kg DECIMAL(6,2),
     dimensions_cm INT,
     material_type VARCHAR(100),
-    assembly_required BOOLEAN DEFAULT FALSE,
-    image_url TEXT 
+    image_url TEXT, 
     supplier_name VARCHAR(255) NOT NULL,
     supllier_email VARCHAR(255) NOT NULL,
     supplier_phone VARCHAR(20),
     stock_quantity INT DEFAULT 0,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (category_id) REFERENCES Categories(category_id)
 );
 
@@ -51,7 +45,6 @@ CREATE TABLE Orders (
     shipping_address TEXT NOT NULL,
     order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     delivery_date DATE,
-    assembly_required BOOLEAN DEFAULT FALSE,
     FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );
 
@@ -65,18 +58,6 @@ CREATE TABLE Order_Items (
     assembly_cost DECIMAL(10,2) DEFAULT 0.00,
     FOREIGN KEY (order_id) REFERENCES Orders(order_id),
     FOREIGN KEY (product_id) REFERENCES Products(product_id)
-);
-);
-
--- Inventory Table
-CREATE TABLE Inventory (
-    inventory_id INT PRIMARY KEY AUTO_INCREMENT,
-    product_id INT NOT NULL,
-    quantity INT NOT NULL DEFAULT 0,
-    reserved_quantity INT DEFAULT 0,
-    last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (product_id) REFERENCES Products(product_id)
-);
 );
 
 -- Payment Table
@@ -98,5 +79,4 @@ CREATE TABLE Payments (
 CREATE INDEX idx_products_category ON Products(category_id);
 CREATE INDEX idx_orders_user ON Orders(user_id);
 CREATE INDEX idx_order_items_order ON Order_Items(order_id);
-CREATE INDEX idx_inventory_product ON Inventory(product_id);
 CREATE INDEX idx_payments_user ON Payments(user_id);
