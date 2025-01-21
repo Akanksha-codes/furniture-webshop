@@ -2,7 +2,6 @@
 CREATE TABLE Users (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
     email VARCHAR(255) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL,
     full_name VARCHAR(100) NOT NULL,
     phone_number VARCHAR(20),
     registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
