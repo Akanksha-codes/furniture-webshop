@@ -2,12 +2,10 @@ erDiagram
     USERS ||--o{ ORDERS : places
     USERS {
         int user_id PK
-        string email
-        string password
+        string email_id
         string full_name
         string phone
-        boolean is_active
-       
+        string address
     }
 
     PRODUCTS ||--o{ ORDER_ITEMS : contains
@@ -24,15 +22,12 @@ erDiagram
         string supplier_name
         string supplier_email
         string supplier_phone
-        boolean assembly_required
     }
    CATEGORIES ||--o{ PRODUCTS : categorizes
     CATEGORIES {
         int category_id PK
         string name
-        int parent_id FK
         string description
-        boolean active
     }
 
     ORDERS ||--o{ ORDER_ITEMS : includes
@@ -44,7 +39,6 @@ erDiagram
         string status
         datetime order_date
         date delivery_date
-        boolean assembly_required
     }
 
     PAYMENT {
@@ -66,12 +60,5 @@ erDiagram
         decimal assembly_cost
     }
 
-    INVENTORY ||--o{ ORDER_ITEMS : tracks
-    INVENTORY {
-        int inventory_id PK
-        int stock_quantity
-        int reserved_quantity
-        datetime last_updated
-    }
 
 
