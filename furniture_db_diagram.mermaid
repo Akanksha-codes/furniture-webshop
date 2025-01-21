@@ -50,6 +50,7 @@ erDiagram
     PAYMENT {
         int payment_id PK
         int order_id FK
+        int user_id FK
         decimal amount
         string payment_method
         datetime payment_date
