@@ -55,9 +55,7 @@ erDiagram
         datetime payment_date
         string status
         string error_message
-        datetime created_at
-        datetime updated_at
-    )
+    }
 
     PRODUCT_VARIANTS ||--o{ ORDER_ITEMS : ordered_as
     PRODUCT_VARIANTS {
