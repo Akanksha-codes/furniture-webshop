@@ -4,8 +4,7 @@ erDiagram
         int user_id PK
         string email
         string password
-        string first_name
-        string last_name
+        string full_name
         string phone
         boolean is_active
        
@@ -22,7 +21,9 @@ erDiagram
         int dimensions
         string material
         text image_url
-        int supplier_id FK
+        string supplier_name
+        string supplier_email
+        string supplier_phone
         boolean assembly_required
     }
    CATEGORIES ||--o{ PRODUCTS : categorizes
@@ -73,12 +74,4 @@ erDiagram
         datetime last_updated
     }
 
-    SUPPLIERS ||--o{ PRODUCTS : supplies
-    SUPPLIERS {
-        int supplier_id PK
-        string name
-        string email
-        string phone
-        string address
-       
-    }
+
