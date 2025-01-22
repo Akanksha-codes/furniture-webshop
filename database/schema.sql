@@ -4,7 +4,7 @@ CREATE TABLE Users (
     email VARCHAR(255) NOT NULL UNIQUE,
     full_name VARCHAR(100) NOT NULL,
     phone_number VARCHAR(20),
-    address VARCHAR(255),
+    address VARCHAR(255)
 );
 
 -- Categories Table
@@ -37,7 +37,7 @@ CREATE TABLE Products (
     material_type VARCHAR(100),
     image_url TEXT, 
     supplier_name VARCHAR(255) NOT NULL,
-    supllier_email VARCHAR(255) NOT NULL,
+    supplier_email VARCHAR(255) NOT NULL,
     supplier_phone VARCHAR(20),
     stock_quantity INT DEFAULT 0,
     FOREIGN KEY (category_id) REFERENCES Categories(category_id)
@@ -80,7 +80,7 @@ CREATE TABLE Order_Items (
 
 -- Payment Table
 CREATE TABLE Payments (
-    payment-id INT PRIMARY KEY AUTO_INCREMENT,
+    payment_id INT PRIMARY KEY AUTO_INCREMENT,
     order_id INT NOT NULL,
     user_id INT NOT NULL,
     payment_method VARCHAR(255),
@@ -89,9 +89,8 @@ CREATE TABLE Payments (
     error_message VARCHAR(255),
     status VARCHAR(50) NOT NULL,
     FOREIGN KEY (order_id) REFERENCES Orders(order_id),
-    FOREIGN KEY (user_id) REFERENCES Users(user_id),
-
- );   
+    FOREIGN KEY (user_id) REFERENCES Users(user_id)
+);   
 
 -- Create Indexes for Better Performance
 CREATE INDEX idx_products_category ON Products(category_id);
