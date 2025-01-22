@@ -6,6 +6,10 @@ CREATE TABLE Users (
     phone_number VARCHAR(20),
     address VARCHAR(255)
 );
+-- Insert users
+INSERT INTO Users ( user_id, email, full_name, phone_number, address) VALUES
+    (001, 'alena27@gmail.com', 'Alena Roy', '12345876599', 'Musterstraße 5 12345 Musterstadt'),
+    
 
 -- Categories Table
 CREATE TABLE Categories (
@@ -16,12 +20,12 @@ CREATE TABLE Categories (
 );
 
 -- Insert Categories
-INSERT INTO Categories (category_id, category_name, description) VALUES
-(1, 'Sofas', 'A wide range of comfortable and stylish sofas.'),
-(2, 'Tables', 'Dining tables, coffee tables, and more.'),
-(3, 'Chairs', 'From armchairs to recliners, find the perfect seating.'),
-(4, 'Desks', 'Functional and stylish desks for home or office.'),
-(5, 'Storage', 'Wardrobes, bookshelves, and other storage solutions.'),
+INSERT INTO Categories (category_id, category_name, description) VALUES 
+    (1, 'Sofas', 'A wide range of comfortable and stylish sofas.'),
+    (2, 'Tables', 'Dining tables, coffee tables, and more.'),
+    (3, 'Chairs', 'From armchairs to recliners, find the perfect seating.'),
+    (4, 'Desks', 'Functional and stylish desks for home or office.'),
+    (5, 'Storage', 'Wardrobes, bookshelves, and other storage solutions.'),
 
 
 
@@ -43,13 +47,13 @@ CREATE TABLE Products (
     FOREIGN KEY (category_id) REFERENCES Categories(category_id)
 );
 -- products list
-INSERT INTO Products (product_id, product_name, description, base_price, category_id, weight_kg, dimensions_cm, material_type, image_url, supplier_name, supplier_email, supplier_phone, stock_quantity, created_at, updated_at) VALUES
-(01, 'Modern Sofa', 'A sleek and stylish modern sofa with comfortable seating.', 499.99, 1, 35.00, 200, 'Fabric', './images/modern_sofa.jpg', 'Comfort Furnishings', 'sales@comfortfurnishings.com', '+1234567890', 10, ),
-(02, 'Wooden Coffee Table', 'Elegant wooden coffee table with a natural finish.', 149.99, 2, 15.00, 100, 'Wood', './images/wooden_coffee_table.jpg', 'Nature Home', 'info@naturehome.com', '+1234567891', 20, ),
-(03,'Dining Table', 'Contemporary glass dining table for modern homes.', 299.99, 2, 40.00, 150, 'Glass', './images/dining_table.jpg', 'Urban Living', 'support@urbanliving.com', '+1234567893', 12, ),
-(04, 'Office Desk', 'Spacious office desk with multiple storage compartments.', 199.99, 4, 20.00, 120, 'Wood', './images/office_desk.jpg', 'Work Smart', 'help@worksmart.com', '+1234567894', 25, ),
-(05, 'Fabric Armchair', 'Cozy fabric armchair with a classic design.', 179.99, 3, 20.00, 70, 'Fabric', './images/arm_chair.jpg', 'Homely Comforts', 'hello@homelycomforts.com', '+1234567895', 18,),
-(06, 'Wardrobe', 'Large wardrobe with plenty of hanging and shelf space.', 349.99, 5, 50.00, 200, 'Wood', './images/wardrobe.jpg', 'Space Saver', 'support@spacesaver.com', '+1234567897', 10,),
+INSERT INTO Products (product_id, product_name, description, base_price, category_id, weight_kg, dimensions_cm, material_type, image_url, supplier_name, supplier_email, supplier_phone, stock_quantity) VALUES
+    (01, 'Modern Sofa', 'A sleek and stylish modern sofa with comfortable seating.', 499.99, 1, 35.00, 200, 'Fabric', './images/modern_sofa.jpg', 'Comfort Furnishings', 'sales@comfortfurnishings.com', '+1234567890', 10, ),
+    (02, 'Wooden Coffee Table', 'Elegant wooden coffee table with a natural finish.', 149.99, 2, 15.00, 100, 'Wood', './images/wooden_coffee_table.jpg', 'Nature Home', 'info@naturehome.com', '+1234567891', 20),
+    (03,'Dining Table', 'Contemporary glass dining table for modern homes.', 299.99, 2, 40.00, 150, 'Glass', './images/dining_table.jpg', 'Urban Living', 'support@urbanliving.com', '+1234567893', 12),
+    (04, 'Office Desk', 'Spacious office desk with multiple storage compartments.', 199.99, 4, 20.00, 120, 'Wood', './images/office_desk.jpg', 'Work Smart', 'help@worksmart.com', '+1234567894', 25),
+    (05, 'Fabric Armchair', 'Cozy fabric armchair with a classic design.', 179.99, 3, 20.00, 70, 'Fabric', './images/arm_chair.jpg', 'Homely Comforts', 'hello@homelycomforts.com', '+1234567895', 18),
+    (06, 'Wardrobe', 'Large wardrobe with plenty of hanging and shelf space.', 349.99, 5, 50.00, 200, 'Wood', './images/wardrobe.jpg', 'Space Saver', 'support@spacesaver.com', '+1234567897', 10),
 
 
 
