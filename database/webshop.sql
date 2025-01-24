@@ -9,7 +9,7 @@ CREATE TABLE Users (
 
 -- Insert users
 INSERT INTO Users ( user_id, email, full_name, phone_number, address) VALUES
-    (1, 'alena27@gmail.com', 'Alena Roy', '12345876599', 'Musterstraße 5 12345 Musterstadt');
+    (1, 'alena27@gmail.com', 'Alena Roy', '15776545365', 'Musterstraße 5 12345 Musterstadt');
 
 
 
