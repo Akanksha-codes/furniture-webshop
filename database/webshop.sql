@@ -55,7 +55,10 @@ INSERT INTO Products (product_id, product_name, description, base_price, categor
     (4, 'Office Desk', 'Spacious office desk with multiple storage compartments.', 199.99, 4, 20.00, 120, 'Wood', './images/office_desk.jpg', 'Work Smart', 'help@worksmart.com', '+1234567894', 25),
     (5, 'Fabric Armchair', 'Cozy fabric armchair with a classic design.', 179.99, 3, 20.00, 70, 'Fabric', './images/arm_chair.jpg', 'Homely Comforts', 'hello@homelycomforts.com', '+1234567895', 18),
     (6, 'Wardrobe', 'Large wardrobe with plenty of hanging and shelf space.', 349.99, 5, 50.00, 200, 'Wood', './images/wardrobe.jpg', 'Space Saver', 'support@spacesaver.com', '+1234567897', 10);
-
+    (7, 'Recliner chair', 'Luxurious leather recliner chair for ultimate relaxation.', 399.99, 3, 25.00, 80, 'Leather', './images/leather_recliner.jpg', 'Comfort Zone', 'sales@comfortzone.com', '+1234567898', 15),
+    (8, 'Glass Cabinet', 'Elegant glass cabinet with ample storage space.', 249.99, 5, 30.00, 180, 'Glass', './images/glass_cabinet.jpg', 'ClearView Furniture', 'info@clearviewfurniture.com', '+1234567899', 8),
+    (9, 'Bookshelf', 'Sturdy metal bookshelf with multiple shelves.', 129.99, 5, 18.00, 160, 'Metal', './images/metal_bookshelf.jpg', 'Home Essentials', 'support@homeessentials.com', '+1234567900', 20),
+    (10, 'Desk Lamp', 'Modern desk lamp with adjustable brightness and color temperature.', 49.99, 4, 2.00, 40, 'Metal & Plastic', './images/desk_lamp.jpg', 'Lighting Solutions', 'help@lightingsolutions.com', '+1234567901', 30);
 
 -- Orders Table
 CREATE TABLE Orders (
