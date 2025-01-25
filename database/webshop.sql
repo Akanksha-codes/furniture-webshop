@@ -49,16 +49,16 @@ CREATE TABLE Products (
 
 -- products list
 INSERT INTO Products (product_id, product_name, description, base_price, category_id, weight_kg, dimensions_cm, material_type, image_url, supplier_name, supplier_email, supplier_phone, stock_quantity) VALUES
-    (1, 'Modern Sofa', 'A sleek and stylish modern sofa with comfortable seating.', 499.99, 1, 35.00, 200, 'Fabric', './images/modern_sofa.jpg', 'Comfort Furnishings', 'sales@comfortfurnishings.com', '+1234567890', 10),
-    (2, 'Wooden Coffee Table', 'Elegant wooden coffee table with a natural finish.', 149.99, 2, 15.00, 100, 'Wood', './images/wooden_coffee_table.jpg', 'Nature Home', 'info@naturehome.com', '+1234567891', 20),
-    (3, 'Dining Table', 'Contemporary glass dining table for modern homes.', 299.99, 2, 40.00, 150, 'Glass', './images/dining_table.jpg', 'Urban Living', 'support@urbanliving.com', '+1234567893', 12),
-    (4, 'Office Desk', 'Spacious office desk with multiple storage compartments.', 199.99, 4, 20.00, 120, 'Wood', './images/office_desk.jpg', 'Work Smart', 'help@worksmart.com', '+1234567894', 25),
-    (5, 'Fabric Armchair', 'Cozy fabric armchair with a classic design.', 179.99, 3, 20.00, 70, 'Fabric', './images/arm_chair.jpg', 'Homely Comforts', 'hello@homelycomforts.com', '+1234567895', 18),
-    (6, 'Wardrobe', 'Large wardrobe with plenty of hanging and shelf space.', 349.99, 5, 50.00, 200, 'Wood', './images/wardrobe.jpg', 'Space Saver', 'support@spacesaver.com', '+1234567897', 10),
-    (7, 'Recliner chair', 'Luxurious leather recliner chair for ultimate relaxation.', 399.99, 3, 25.00, 80, 'Leather', './images/leather_recliner.jpg', 'Comfort Zone', 'sales@comfortzone.com', '+1234567898', 15),
-    (8, 'Glass Cabinet', 'Elegant glass cabinet with ample storage space.', 249.99, 5, 30.00, 180, 'Glass', './images/glass_cabinet.jpg', 'ClearView Furniture', 'info@clearviewfurniture.com', '+1234567899', 8),
-    (9, 'Bookshelf', 'Sturdy metal bookshelf with multiple shelves.', 129.99, 5, 18.00, 160, 'Metal', './images/metal_bookshelf.jpg', 'Home Essentials', 'support@homeessentials.com', '+1234567900', 20),
-    (10, 'Desk Lamp', 'Modern desk lamp with adjustable brightness and color temperature.', 49.99, 4, 2.00, 40, 'Metal & Plastic', './images/desk_lamp.jpg', 'Lighting Solutions', 'help@lightingsolutions.com', '+1234567901', 30);
+    (1, 'Modern Sofa', 'A sleek and stylish modern sofa with comfortable seating.', 499.99, 1, 35.00, 200, 'Fabric', 'https://webshopfra.s3.us-east-1.amazonaws.com/morder_sofa.jpg', 'Comfort Furnishings', 'sales@comfortfurnishings.com', '+1234567890', 10),
+    (2, 'Wooden Coffee Table', 'Elegant wooden coffee table with a natural finish.', 149.99, 2, 15.00, 100, 'Wood', 'https://webshopfra.s3.us-east-1.amazonaws.com/coffe_table.jpg', 'Nature Home', 'info@naturehome.com', '+1234567891', 20),
+    (3, 'Dining Table', 'Contemporary glass dining table for modern homes.', 299.99, 2, 40.00, 150, 'Glass', 'https://webshopfra.s3.us-east-1.amazonaws.com/dinning_table.jpg', 'Urban Living', 'support@urbanliving.com', '+1234567893', 12),
+    (4, 'Office Desk', 'Spacious office desk with multiple storage compartments.', 199.99, 4, 20.00, 120, 'Wood', 'https://webshopfra.s3.us-east-1.amazonaws.com/office_desk.jpg', 'Work Smart', 'help@worksmart.com', '+1234567894', 25),
+    (5, 'Fabric Armchair', 'Cozy fabric armchair with a classic design.', 179.99, 3, 20.00, 70, 'Fabric', 'https://webshopfra.s3.us-east-1.amazonaws.com/arm_chair.jpg', 'Homely Comforts', 'hello@homelycomforts.com', '+1234567895', 18),
+    (6, 'Wardrobe', 'Large wardrobe with plenty of hanging and shelf space.', 349.99, 5, 50.00, 200, 'Wood', 'https://webshopfra.s3.us-east-1.amazonaws.com/wardrobe.jpg', 'Space Saver', 'support@spacesaver.com', '+1234567897', 10),
+    (7, 'Recliner chair', 'Luxurious leather recliner chair for ultimate relaxation.', 399.99, 3, 25.00, 80, 'Leather', 'https://webshopfra.s3.us-east-1.amazonaws.com/leather_recliner.jpg', 'Comfort Zone', 'sales@comfortzone.com', '+1234567898', 15),
+    (8, 'Glass Cabinet', 'Elegant glass cabinet with ample storage space.', 249.99, 5, 30.00, 180, 'Glass', 'https://webshopfra.s3.us-east-1.amazonaws.com/glass_cabinet.jpg', 'ClearView Furniture', 'info@clearviewfurniture.com', '+1234567899', 8),
+    (9, 'Bookshelf', 'Sturdy metal bookshelf with multiple shelves.', 129.99, 5, 18.00, 160, 'Metal', 'https://webshopfra.s3.us-east-1.amazonaws.com/metal_bookshelf.jpg', 'Home Essentials', 'support@homeessentials.com', '+1234567900', 20),
+    (10, 'Desk Lamp', 'Modern desk lamp with adjustable brightness and color temperature.', 49.99, 4, 2.00, 40, 'Metal & Plastic', 'https://webshopfra.s3.us-east-1.amazonaws.com/desk_lamp.jpg', 'Lighting Solutions', 'help@lightingsolutions.com', '+1234567901', 30);
 
 -- Orders Table
 CREATE TABLE Orders (
