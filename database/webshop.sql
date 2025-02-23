@@ -1,6 +1,6 @@
 -- Users Table
 CREATE TABLE Users (
-    user_id INT PRIMARY KEY,
+    user_id SERIAL PRIMARY KEY,
     email VARCHAR(255) NOT NULL UNIQUE,
     full_name VARCHAR(100) NOT NULL,
     phone_number VARCHAR(20),
@@ -15,7 +15,7 @@ INSERT INTO Users ( user_id, email, full_name, phone_number, address) VALUES
 
 -- Categories Table
 CREATE TABLE Categories (
-    category_id INT PRIMARY KEY,
+    category_id SERIAL PRIMARY KEY,
     category_name VARCHAR(100) NOT NULL,
     description TEXT
 );
@@ -31,7 +31,7 @@ INSERT INTO Categories (category_id, category_name, description) VALUES
 
 -- Products Table
 CREATE TABLE Products (
-    product_id INT PRIMARY KEY,
+    product_id SERIAL PRIMARY KEY,
     product_name VARCHAR(255) NOT NULL,
     description TEXT,
     base_price DECIMAL(10,2) NOT NULL,
@@ -62,7 +62,7 @@ INSERT INTO Products (product_id, product_name, description, base_price, categor
 
 -- Orders Table
 CREATE TABLE Orders (
-    order_id INT PRIMARY KEY,
+    order_id SERIAL PRIMARY KEY,
     user_id INT NOT NULL,
     status VARCHAR(50) NOT NULL,
     total_amount DECIMAL(10,2) NOT NULL,
@@ -74,7 +74,7 @@ CREATE TABLE Orders (
 
 -- Order Items Table
 CREATE TABLE Order_Items (
-    order_item_id INT PRIMARY KEY,
+    order_item_id SERIAL PRIMARY KEY,
     order_id INT NOT NULL,
     product_id INT NOT NULL,
     quantity INT NOT NULL,
@@ -86,7 +86,7 @@ CREATE TABLE Order_Items (
 
 -- Payment Table
 CREATE TABLE Payments (
-    payment_id INT PRIMARY KEY,
+    payment_id SERIAL PRIMARY KEY,
     order_id INT NOT NULL,
     user_id INT NOT NULL,
     payment_method VARCHAR(255),
