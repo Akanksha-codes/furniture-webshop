@@ -1,0 +1,59 @@
+flowchart TB
+    subgraph "Demo Application"
+        subgraph "Frontend Layer"
+            WebUI["Web Interface"]
+            MobileApp["Mobile App"]
+        end
+        
+        subgraph "API Layer"
+            APIGateway["API Gateway"]
+            AuthService["Authentication Service"]
+        end
+        
+        subgraph "Service Layer"
+            UserService["User Service"]
+            ProductService["Product Service"]
+            OrderService["Order Service"]
+            NotificationService["Notification Service"]
+        end
+        
+        subgraph "Data Layer"
+            UserDB[(User Database)]
+            ProductDB[(Product Database)]
+            OrderDB[(Order Database)]
+            Cache[(Cache)]
+        end
+    end
+    
+    %% Frontend to API connections
+    WebUI <--> APIGateway
+    MobileApp <--> APIGateway
+    
+    %% API to Service connections
+    APIGateway <--> AuthService
+    APIGateway <--> UserService
+    APIGateway <--> ProductService
+    APIGateway <--> OrderService
+    
+    %% Service to Service connections
+    OrderService <--> UserService
+    OrderService <--> ProductService
+    OrderService <--> NotificationService
+    
+    %% Service to Data connections
+    UserService <--> UserDB
+    ProductService <--> ProductDB
+    OrderService <--> OrderDB
+    UserService <--> Cache
+    ProductService <--> Cache
+    OrderService <--> Cache
+    
+    classDef frontend fill:#f5f5f5,stroke:#666,stroke-width:1px
+    classDef api fill:#d5e8d4,stroke:#82b366,stroke-width:1px
+    classDef service fill:#dae8fc,stroke:#6c8ebf,stroke-width:1px
+    classDef database fill:#ffe6cc,stroke:#d79b00,stroke-width:1px
+    
+    class WebUI,MobileApp frontend
+    class APIGateway,AuthService api
+    class UserService,ProductService,OrderService,NotificationService service
+    class UserDB,ProductDB,OrderDB,Cache database
