@@ -1,63 +1,62 @@
 erDiagram
-    USERS ||--o{ ORDERS : "places"
+    USERS ||--o{ ORDERS : places
     USERS {
-        int user_id PK "Primary Key"
-        string email_id "User's email address"
-        string full_name "User's full name"
-        string phone "User's phone number"
-        string address "User's address"
+        int user_id PK
+        string email_id
+        string full_name
+        string phone
+        string address
     }
 
-    PRODUCTS ||--o{ ORDER_ITEMS : "contains"
+    PRODUCTS ||--o{ ORDER_ITEMS : contains
     PRODUCTS {
-        int product_id PK "Primary Key"
-        string name "Product name"
-        text description "Product description"
-        decimal price "Product price"
-        int category_id FK "Foreign Key to CATEGORIES"
-        decimal weight "Product weight"
-        int dimensions "Product dimensions"
-        string material "Product material"
-        text image_url "URL of the product image"
-        string supplier_name "Supplier's name"
-        string supplier_email "Supplier's email"
-        string supplier_phone "Supplier's phone number"
+        int product_id PK
+        string name
+        text description
+        decimal price
+        int category_id FK
+        decimal weight
+        int dimensions
+        string material
+        text image_url
+        string supplier_name
+        string supplier_email
+        string supplier_phone
     }
-
-    CATEGORIES ||--o{ PRODUCTS : "categorizes"
+   CATEGORIES ||--o{ PRODUCTS : categorizes
     CATEGORIES {
-        int category_id PK "Primary Key"
-        string name "Category name"
-        string description "Category description"
+        int category_id PK
+        string name
+        string description
     }
 
-    ORDERS ||--o{ ORDER_ITEMS : "includes"
-    ORDERS ||--|| PAYMENT : "has"
+    ORDERS ||--o{ ORDER_ITEMS : includes
+    ORDERS ||--|| PAYMENT : has
     ORDERS {
-        int order_id PK "Primary Key"
-        int user_id FK "Foreign Key to USERS"
-        decimal total_amount "Total amount of the order"
-        string status "Order status"
-        datetime order_date "Date and time of the order"
-        date delivery_date "Expected delivery date"
+        int order_id PK
+        int user_id FK
+        decimal total_amount
+        string status
+        datetime order_date
+        date delivery_date
     }
 
     PAYMENT {
-        int payment_id PK "Primary Key"
-        int order_id FK "Foreign Key to ORDERS"
-        int user_id FK "Foreign Key to USERS"
-        decimal amount "Payment amount"
-        string payment_method "Payment method used"
-        datetime payment_date "Date and time of the payment"
-        string status "Payment status"
-        string error_message "Error message if payment failed"
+        int payment_id PK
+        int order_id FK
+        int user_id FK
+        decimal amount
+        string payment_method
+        datetime payment_date
+        string status
+        string error_message
     }
 
     ORDER_ITEMS {
-        int order_item_id PK "Primary Key"
-        int order_id FK "Foreign Key to ORDERS"
-        int quantity "Quantity of the product ordered"
-        decimal unit_price "Unit price of the product"
-        decimal assembly_cost "Assembly cost for the product"
+        int order_item_id PK
+        int order_id FK
+        int quantity
+        decimal unit_price
+        decimal assembly_cost
     }
 
